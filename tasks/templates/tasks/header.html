@@ -1,0 +1,17 @@
+{% extends 'tasks/base_page.html' %}
+
+{% block header %}
+    {% load bootstrap_icons %}
+    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+      <a href="{% url 'tasks:task_list' %}" class="d-flex align-items-center text-dark text-decoration-none">
+        {% bs_icon 'clipboard2-check-fill' size='2.5em' %}
+        <span class="fs-4" style="padding-left: 0.5em">  TO-DO list</span>
+      </a>
+
+      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+        <a class="me-3 py-2 text-dark text-decoration-none" href="{% url 'tasks:task_history' %}">History</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="{% url 'tasks:task_create' %}"
+        >Add new task{% bs_icon 'plus-square' %}</a>
+      </nav>
+    </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'tasks/header.html' %}
+
+{% block title %}
+    {{ task.title }}
+{% endblock %}
+{% load humanize %}
+{% block content %}
+    <span style="float: right">
+    ({{ task.updated_at|naturaltime }})
+        {% load bootstrap_icons %}
+        {% if task.active %}
+            <a href="{% url 'tasks:task_update' task.id %}">{% bs_icon 'pencil' %}</a>
+            <a href="{% url 'tasks:task_delete' task.id %}">{% bs_icon 'trash' %}</a>
+        {% endif %}
+    </span>
+    <h1>{{ task.title }}</h1>
+    <p>{{ task.description }}</p>
+{% endblock %}

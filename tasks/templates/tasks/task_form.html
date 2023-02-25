@@ -1,0 +1,19 @@
+{% extends 'tasks/header.html' %}
+{% load crispy_forms_filters %}
+
+{% block title %}
+    {% if task %}
+        {{ task.title }}
+    {% endif %}
+    New task
+{% endblock %}
+
+{% block content %}
+    <h1>Create new task</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" value="Submit">
+        <input type="submit" value="Cancel" onclick="window.location.href='{% url 'tasks:task_list' %}';return false;">
+    </form>
+{% endblock %}

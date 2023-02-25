@@ -1,0 +1,14 @@
+{% extends 'tasks/header.html' %}
+
+{% block title %}
+    Confirm delete
+{% endblock %}
+{% block content %}
+    <h1>Are you sure you want to delete {{ task.title }}?</h1>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Yes, delete.">
+        <input type="submit" value="Cancel" onclick="window.location.href='{% url 'tasks:task_list' %}'; return false;">
+    </form>
+{% endblock %}

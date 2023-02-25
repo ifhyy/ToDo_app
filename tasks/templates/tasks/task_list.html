@@ -1,0 +1,27 @@
+{% extends 'tasks/header.html' %}
+
+
+{% block title %}
+    List of tasks
+{% endblock %}
+{% block content %}
+    {% if task_list %}
+        {% for task in task_list %}
+            <div class="select2-container--classic alert alert-success mt-2" style="display: flex; flex-direction: row;
+                                                                            justify-content: space-between">
+                <a style="text-decoration: none; color: black; width: 90%" href="{{ task.get_absolute_url }}" >
+                    <div>
+                        <h3>{{ task.title }}</h3>
+                        <p>{{ task.description|truncatewords:3 }}</p>
+                    </div>
+                </a>
+                {% load bootstrap_icons %}
+                <div style="width: 10%; height: 6em; border-left: solid black 0.1em">
+                    <a href="{% url 'tasks:task_done' task.id %}" style="text-decoration: none; color: darkolivegreen;">
+                        {% bs_icon 'check' size='1 em' %}
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
